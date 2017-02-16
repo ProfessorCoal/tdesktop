@@ -8,5 +8,8 @@ init:
 install:
   - ./.appveyor/install.bat
 
+build:
+  project: Telegram.sln
+
 on_finish:
   - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
