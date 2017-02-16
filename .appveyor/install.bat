@@ -7,7 +7,6 @@ SET QT_VERSION=5_6_2
 cd %BUILD_DIR%
 
 call:getDependencies
-call:installQT5Package
 call:setupGYP
 
 echo Finished!
@@ -25,13 +24,6 @@ GOTO:EOF
     cd %LIB_DIR%
 	
 	call prepare.bat
-	
-	dir
-GOTO:EOF
-
-:installQT5Package
-    call:logInfo "Installing Qt5Package for VS"
-	call powershell %SRC_DIR%\.appveyor\install-qt_package.ps1
 GOTO:EOF
 
 :setupGYP
