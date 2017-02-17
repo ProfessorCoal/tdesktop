@@ -1,9 +1,5 @@
 image: Visual Studio 2015
-
 clone_folder: C:\TBuild\tdesktop
-
-init:
-  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 install:
   - ./.appveyor/install.bat
@@ -11,5 +7,8 @@ install:
 build:
   project: Telegram.sln
 
-on_finish:
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+artifacts:
+  - path: out\Debug\Telegram.exe
+    name: Telegram_debug.exe
+  - path: out\Debug\Telegram.exe.pdb
+    name: Telegram_debug.exe.pdb
